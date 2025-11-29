@@ -9,27 +9,57 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
- 
+    let total = 0; // Initialize a variable total to hold the cumulative sum.
+    // Iterate over the cart array using cart.forEach().
+    cart.forEach(item => {
+      // Extract its quantity and cost.
+      const quantity = item.quantity;
+      
+      // Convert the cost string (e.g., "$10.00") to a number 
+      const itemCost = parseFloat(item.cost.substring(1));
+      
+      // Add the resulting value to total.
+      total += itemCost * quantity;
+    });
+    return total; // After processing all items, return the final total sum.
   };
 
   const handleContinueShopping = (e) => {
-   
+    onContinueShopping(e); // Calling the prop to return to the plant list
   };
-
-
-
+ 
+  const handleCheckoutShopping = (e) => {
+    alert('Functionality to be added for future reference');
+  };
   const handleIncrement = (item) => {
+    dispatch(updateQuantity({
+        name: item.name, 
+        quantity: item.quantity + 1 
+    }));
   };
 
   const handleDecrement = (item) => {
-   
+    // If the quantity is greater than 1, decrement it
+    if (item.quantity > 1) {
+        dispatch(updateQuantity({
+            name: item.name, 
+                quantity: item.quantity - 1 
+        }));
+    } else {
+    // If quantity is 1 (and decrementing would make it 0), remove the item
+        dispatch(removeItem(item.name));
+        }
   };
 
   const handleRemove = (item) => {
+    dispatch(removeItem(item.name));
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    const unitPrice = parseFloat(item.cost.substring(1));
+    const subtotal = unitPrice * item.quantity;
+    return subtotal.toFixed(2); // Return subtotal formatted to two decimal places
   };
 
   return (
