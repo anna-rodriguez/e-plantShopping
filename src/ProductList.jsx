@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux'; // <-- ADDED useDispatch
 import './ProductList.css'
 import CartItem from './CartItem';
-import { addItem } from './CartSlice'; // <-- Corrected to named import { addItem }
+import addItem from './CartSlice'; // <-- Corrected to named import { addItem }
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
@@ -12,7 +12,9 @@ function ProductList({ onHomeClick }) {
     
     // 2. Added initialization of dispatch hook
     const dispatch = useDispatch(); // <-- ADDED Initialization
-
+        dispatch(addItem(product));
+    
+        
     const plantsArray = [
         // ... (Your plantsArray data remains here) ...
     ];
