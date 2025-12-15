@@ -1,6 +1,11 @@
 e-plantShopping 🌱
+
+
 Welcome to e-plantShopping, your go-to online plant shopping experience!
+
+
 🌿 Overview
+
 This application makes it easy and enjoyable to bring greenery into your home. With e-plantShopping, you can:
 
 Browse a wide variety of houseplants with beautiful images and helpful descriptions.
