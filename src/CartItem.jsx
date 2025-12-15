@@ -45,7 +45,7 @@ const CartItem = ({ onContinueShopping }) => {
         if (currentQty > 1) {
             dispatch(updateQuantity({ name: item.name, quantity: currentQty - 1 }));
         } else {
-            dispatch(removeItem({ name: item.name }));
+            dispatch(removeItem(item.name));
         }
   };
 
